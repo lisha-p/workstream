@@ -1,0 +1,9 @@
+node_modules/
+backend/data/issues.json
+backend/data/*.tmp
+backend/data/*.sqlite
+backend/data/*.sqlite-shm
+backend/data/*.sqlite-wal
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/

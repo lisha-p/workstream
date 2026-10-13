@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f8fa" />
+    <title>Workstream — Project board</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="Workstream home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span>workstream</span>
+        </a>
+
+        <button class="workspace-switcher" type="button">
+          <span class="workspace-avatar">A</span>
+          <span class="workspace-copy"><strong>Acme Studio</strong><small>Free workspace</small></span>
+          <span class="switcher-caret" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="nav-group">
+          <p class="nav-label">WORKSPACE</p>
+          <button class="nav-item" type="button"><span class="nav-icon">⌂</span> Home</button>
+          <button class="nav-item active" type="button"><span class="nav-icon board-icon">▦</span> Projects</button>
+          <button class="nav-item" type="button"><span class="nav-icon">◷</span> My issues <span class="nav-count" id="my-issues-count">0</span></button>
+        </div>
+
+        <div class="projects-heading"><p class="nav-label">YOUR PROJECTS</p><button id="add-project-button" class="icon-button subtle" aria-label="Add project" type="button">＋</button></div>
+        <button class="project-link selected" type="button"><span class="project-dot purple"></span><span>Website redesign</span><span class="project-more">···</span></button>
+        <button class="project-link" type="button"><span class="project-dot blue"></span><span>Mobile app</span></button>
+        <button class="project-link" type="button"><span class="project-dot green"></span><span>Marketing site</span></button>
+        <button class="project-link muted" type="button"><span class="nav-icon">＋</span><span>Create project</span></button>
+
+        <div class="sidebar-spacer"></div>
+        <div class="sidebar-tip">
+          <div class="tip-icon">✦</div>
+          <strong>Good work, together.</strong>
+          <p>Keep your team moving forward, one issue at a time.</p>
+          <button type="button" id="invite-button">Invite your team <span>→</span></button>
+        </div>
+        <button class="profile-button" type="button">
+          <span class="profile-avatar">JD</span><span class="profile-copy"><strong>Jordan Davis</strong><small>jordan@acme.co</small></span><span class="profile-more">···</span>
+        </button>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div class="breadcrumbs"><span>Projects</span><span class="crumb-divider">/</span><strong>Website redesign</strong><span class="project-dot purple"></span><button class="crumb-menu" type="button" aria-label="Project menu">⌄</button></div>
+          <div class="topbar-actions">
+            <span class="shortcut-hint"><kbd>⌘</kbd> <kbd>K</kbd> <span>Quick search</span></span>
+            <button class="icon-button notification-button" type="button" aria-label="Notifications">♧<i></i></button>
+            <button class="help-button" type="button" aria-label="Help">?</button>
+            <span class="topbar-avatar">JD</span>
+          </div>
+        </header>
+
+        <section class="page-content">
+          <div class="project-title-row">
+            <div>
+              <div class="eyebrow"><span class="project-dot purple"></span> PROJECT <span class="eyebrow-divider">·</span> <span id="project-progress-label">SPRINT 04</span></div>
+              <h1>Website redesign <button class="title-caret" type="button" aria-label="Project options">⌄</button></h1>
+              <p class="page-description">A fresh new look for our digital home.</p>
+            </div>
+            <div class="title-actions">
+              <div class="avatar-stack" aria-label="3 project members"><span class="member-avatar member-one">JD</span><span class="member-avatar member-two">AM</span><span class="member-avatar member-three">SK</span><button id="invite-small" type="button" aria-label="Invite members">＋</button></div>
+              <button id="share-button" class="secondary-button" type="button"><span>↗</span> Share</button>
+              <button id="create-issue-top" class="primary-button" type="button"><span>＋</span> Create issue</button>
+            </div>
+          </div>
+
+          <div class="stats-row" aria-label="Project summary">
+            <div class="stat"><span class="stat-icon total-icon">▦</span><span><strong id="total-stat">0</strong><small>Total issues</small></span></div>
+            <div class="stat"><span class="stat-icon progress-icon">◷</span><span><strong id="progress-stat">0</strong><small>In progress</small></span></div>
+            <div class="stat"><span class="stat-icon done-icon">✓</span><span><strong id="done-stat">0%</strong><small>Completed</small></span></div>
+            <div class="stat sprint-stat"><span class="stat-icon sprint-icon">✳</span><span><strong>Sprint 04</strong><small>Ends in 8 days</small></span></div>
+            <button id="sprint-button" class="sprint-menu" type="button" aria-label="Sprint options">···</button>
+          </div>
+
+          <div class="board-toolbar">
+            <div class="view-tabs"><button class="view-tab active" type="button"><span>▦</span> Board</button><button class="view-tab" type="button"><span>☷</span> List <span class="soon-tag">SOON</span></button></div>
+            <div class="board-controls">
+              <label class="search-box"><span aria-hidden="true">⌕</span><input id="search-input" type="search" placeholder="Search issues..." aria-label="Search issues" /><kbd>/</kbd></label>
+              <select id="priority-filter" class="filter-select" aria-label="Filter by priority"><option value="all">All priorities</option><option value="urgent">Urgent</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select>
+              <button id="filter-button" class="filter-button" type="button"><span>☷</span> Filter</button>
+              <div class="toolbar-avatars"><span class="member-avatar member-one">JD</span><span class="member-avatar member-two">AM</span><button type="button" id="more-members" aria-label="More members">+2</button></div>
+              <button class="icon-button toolbar-menu" type="button" aria-label="More board options">···</button>
+            </div>
+          </div>
+
+          <div class="board" id="board" aria-label="Issue board">
+            <section class="board-column" data-status="todo" aria-label="To do">
+              <div class="column-heading"><span class="status-dot todo-dot"></span><h2>To do</h2><span class="column-count" data-count="todo">0</span><button class="column-menu" type="button" aria-label="To do options">···</button><button class="column-add" data-add-status="todo" type="button" aria-label="Add issue to To do">＋</button></div>
+              <div class="issue-list" data-list="todo"></div>
+              <button class="add-issue-inline" data-add-status="todo" type="button"><span>＋</span> Add issue</button>
+            </section>
+            <section class="board-column" data-status="in-progress" aria-label="In progress">
+              <div class="column-heading"><span class="status-dot progress-dot"></span><h2>In progress</h2><span class="column-count" data-count="in-progress">0</span><button class="column-menu" type="button" aria-label="In progress options">···</button><button class="column-add" data-add-status="in-progress" type="button" aria-label="Add issue to In progress">＋</button></div>
+              <div class="issue-list" data-list="in-progress"></div>
+              <button class="add-issue-inline" data-add-status="in-progress" type="button"><span>＋</span> Add issue</button>
+            </section>
+            <section class="board-column" data-status="done" aria-label="Done">
+              <div class="column-heading"><span class="status-dot done-dot"></span><h2>Done</h2><span class="column-count" data-count="done">0</span><button class="column-menu" type="button" aria-label="Done options">···</button><button class="column-add" data-add-status="done" type="button" aria-label="Add issue to Done">＋</button></div>
+              <div class="issue-list" data-list="done"></div>
+              <button class="add-issue-inline" data-add-status="done" type="button"><span>＋</span> Add issue</button>
+            </section>
+          </div>
+          <footer class="board-footer"><span><span class="footer-live-dot"></span> All changes saved</span><span>Last updated just now</span></footer>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="issue-dialog" class="issue-dialog">
+      <form id="issue-form">
+        <div class="dialog-heading"><div><span id="dialog-eyebrow">NEW ISSUE</span><h2 id="dialog-title">Create an issue</h2></div><button class="dialog-close" type="button" aria-label="Close">×</button></div>
+        <label class="form-field">Issue title<input id="issue-title" name="title" maxlength="120" placeholder="What needs to be done?" required /></label>
+        <label class="form-field">Description<textarea id="issue-description" name="description" rows="3" maxlength="500" placeholder="Add a little more detail..."></textarea></label>
+        <div class="form-grid">
+          <label class="form-field">Status<select id="issue-status" name="status"><option value="todo">To do</option><option value="in-progress">In progress</option><option value="done">Done</option></select></label>
+          <label class="form-field">Priority<select id="issue-priority" name="priority"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option><option value="urgent">Urgent</option></select></label>
+        </div>
+        <div class="form-grid">
+          <label class="form-field">Assignee<select id="issue-assignee" name="assignee"><option value="JD">Jordan Davis</option><option value="AM">Alex Morgan</option><option value="SK">Sam Kim</option><option value="">Unassigned</option></select></label>
+          <label class="form-field">Due date<input id="issue-due" name="due" type="date" /></label>
+        </div>
+        <div class="dialog-actions"><button id="delete-issue" class="delete-button" type="button" hidden>Delete issue</button><span class="dialog-spacer"></span><button class="secondary-button cancel-button" type="button">Cancel</button><button class="primary-button" type="submit">Create issue</button></div>
+      </form>
+    </dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
